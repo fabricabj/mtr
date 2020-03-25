@@ -1,0 +1,44 @@
+.row{
+  padding: 0px;
+  margin:0px;
+}
+.formulario input{
+   text-align-last: center;
+}
+.social{
+	      margin-right: 20px;
+	      padding-top: 20px;
+	      float: right;
+	      letter-spacing: 4px;
+      }
+      .social a{
+        font-size: 30px;
+        color:grey;
+        text-decoration: none;
+      }
+      .social a>.fac:hover{
+         font-size: 30px;
+         color:#0d47a1;
+         text-decoration: none;
+      }
+      .social a>.ins:hover{
+         font-size: 30px;
+         color:white;
+         text-decoration: none;
+      }
+      .social a>.git:hover{
+         font-size: 30px;
+         color:black;
+         text-decoration: none;
+      }
+.titulo{
+  animation-duration: 3s;
+  animation-name: text;
+  animation-iteration-count: infinite;
+  letter-spacing: 4px;
+}
+@keyframes text{
+    0%{color:#e0f2f1;}
+    50%{color:#4db6ac;}
+    100%{color:#00695c;}
+}
