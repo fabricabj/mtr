@@ -1,0 +1,130 @@
+<html>   
+ <head>
+   <title>matrices</title>
+   <meta charset="utf-8">
+   <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="matrices.css">
+ </head>
+<body style="background: #607d8b">
+    <div  class="social">                                                                    
+            <a title="Instagram" href="https://www.instagram.com/fabricabj_97/" target="_blank"><i class="fab fa-instagram ins"></i></a>
+            <a title="Facebook" href="https://www.facebook.com/fabricio.colavella" target="_blank"><i class="fab fa-facebook fac"></i></a>
+            <a title="GitHub" href="https://github.com/fabricabj" target="_blank"><i class="fab fa-github git"></i></a>
+    </div>
+    <div style="background: #212121;padding-top: 20px"> 
+      <h2 class="titulo" align="center">cálculo de matrices (3x3)</h2><br>
+      <hr>
+    </div>
+    <div style="padding-top: 20px" class="row" align="center">
+      <div class="col-md-6">
+      <form class="formulario" name="matriza">
+            <strong>MATRIZ A=</strong><br> 
+            <input id="a11"  type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="a12"  type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="a13"  type="text" size="3" onkeypress="return filterFloat(event,this);"><br>
+            <input id="a21"  type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="a22"  type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="a23"  type="text" size="3" onkeypress="return filterFloat(event,this);"><br>
+            <input id="a31"  type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="a32"  type="text" size="3" onkeypress="return filterFloat(event,this);">     
+            <input id="a33"  type="text" size="3" onkeypress="return filterFloat(event,this);">
+      </form>
+    </div>
+    <div class="col-md-6">
+      <form class="formulario" name="matrizb">
+            <strong>MATRIZ B=</strong><BR> 
+            <input id="b11" type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="b12" type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="b13" type="text" size="3" onkeypress="return filterFloat(event,this);"><br>
+            <input id="b21" type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="b22" type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="b23" type="text" size="3" onkeypress="return filterFloat(event,this);"><br>
+            <input id="b31" type="text" size="3" onkeypress="return filterFloat(event,this);">
+            <input id="b32" type="text" size="3" onkeypress="return filterFloat(event,this);">     
+            <input id="b33" type="text" size="3" onkeypress="return filterFloat(event,this);">
+      </form>
+    </div>
+    <div class="col-md-12" align="center">
+         <button title="multiplicar A*B" type="submit" href="#" class="btn btn-primary" onclick="producto();">producto</button>
+         <button title="sumar A+B" type="submit" href="#" class="btn btn-primary" onclick="suma();">suma</button>
+         <button title="restar A-B" type="submit" href="#" class="btn btn-primary" onclick="resta();">resta</button>
+    </div>
+    <div class="col-md-6">
+  
+      <form class="formulario" class="resultado" name="matrizc">
+            <strong>MATRIZ C=</strong><strong id="producto" hidden>(AxB)</strong><strong id="suma" hidden>(A+B)</strong><strong id="resta" hidden>(A-B)</strong><br>
+            <input id="c11" type="text" size="3" onkeyup="validarBoton()" onkeypress="return filterFloat(event,this);">
+            <input id="c12" type="text" size="3" onkeyup="validarBoton()" onkeypress="return filterFloat(event,this);">
+            <input id="c13" type="text" size="3" onkeyup="validarBoton()" onkeypress="return filterFloat(event,this);"><br>
+            <input id="c21" type="text" size="3" onkeyup="validarBoton()" onkeypress="return filterFloat(event,this);">
+            <input id="c22" type="text" size="3" onkeyup="validarBoton()" onkeypress="return filterFloat(event,this);">
+            <input id="c23" type="text" size="3" onkeyup="validarBoton()" onkeypress="return filterFloat(event,this);"><br>
+            <input id="c31" type="text" size="3" onkeyup="validarBoton()" onkeypress="return filterFloat(event,this);">
+            <input id="c32" type="text" size="3" onkeyup="validarBoton()" onkeypress="return filterFloat(event,this);">     
+            <input id="c33" type="text" size="3" onkeyup="validarBoton()" onkeypress="return filterFloat(event,this);">
+      </form>
+      <div align="center">
+      <button type="submit"  href="#" id="btnInversa" class="btn btn-primary" onclick="Inversa();" disabled>Inversa</button>
+         <button type="submit"  href="#" id="btnModificar" class="btn btn-primary" onclick="Modificar();" disabled>Limpiar</button>
+      </div>
+      </div>
+      <div class="col-md-6">
+      <form class="formulario" class="resultado">
+            <strong>MATRIZ INVERSA DE C</strong><br>
+            <input id="i11" type="text" size="3" disabled>
+            <input id="i12" type="text" size="3" disabled>
+            <input id="i13" type="text" size="3" disabled><br>
+            <input id="i21" type="text" size="3" disabled>
+            <input id="i22" type="text" size="3" disabled>
+            <input id="i23" type="text" size="3" disabled><br>
+            <input id="i31" type="text" size="3" disabled>
+            <input id="i32" type="text" size="3" disabled>     
+            <input id="i33" type="text" size="3" disabled>
+      </form>
+      <button id="mostrarPasos" type="submit" href="#" class="btn btn-primary" onclick="pasos();" disabled>mostrar pasos</button>
+      </div>
+    </div>
+    <br>
+    <br>
+      <div style="color: white" id="pasos" align="center" class="row" hidden>
+        <div class="col-md-4">
+           <h3 id="det"></h3>
+           <p id="proc"></p>
+        </div>
+        <div class="col-md-4">
+           <form class="formulario" class="resultado">
+            <strong>MATRIZ TRASPUESTA DE C</strong><br>
+            <input id="t11" type="text" size="3" disabled>
+            <input id="t12" type="text" size="3" disabled>
+            <input id="t13" type="text" size="3" disabled><br>
+            <input id="t21" type="text" size="3" disabled>
+            <input id="t22" type="text" size="3" disabled>
+            <input id="t23" type="text" size="3" disabled><br>
+            <input id="t31" type="text" size="3" disabled>
+            <input id="t32" type="text" size="3" disabled>     
+            <input id="t33" type="text" size="3" disabled>
+           </form>
+           </div>
+           <div class="col-md-4">
+           <form class="formulario" class="resultado">
+            <strong>MATRIZ ADJUNTA DE C TRASPUESTA</strong><br>
+            <input id="ad11" type="text" size="3" disabled>
+            <input id="ad12" type="text" size="3" disabled>
+            <input id="ad13" type="text" size="3" disabled><br>
+            <input id="ad21" type="text" size="3" disabled>
+            <input id="ad22" type="text" size="3" disabled>
+            <input id="ad23" type="text" size="3" disabled><br>
+            <input id="ad31" type="text" size="3" disabled>
+            <input id="ad32" type="text" size="3" disabled>     
+            <input id="ad33" type="text" size="3" disabled>
+           </form>
+           </div>
+      </div>
+   </div>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="matrices.js"></script>
+  <script src="jquery.min.js"></script>
+  
+  <script src="https://kit.fontawesome.com/2be8605e79.js"></script>
+ </body>
+</html>
